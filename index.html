@@ -41,6 +41,9 @@ h2 i{color:var(--blue)}
 .grid button{display:block;width:100%;margin:0 0 16px;padding:0;border:0;background:var(--line);border-radius:10px;overflow:hidden;cursor:zoom-in;break-inside:avoid}
 .grid img{display:block;width:100%;height:auto;transition:transform .6s,opacity .3s}
 .grid button:hover img{transform:scale(1.04)}
+.grid.small{columns:auto;display:flex;flex-wrap:wrap;gap:16px;align-items:flex-start}
+.grid.small button{width:auto;margin:0;max-width:100%}
+.grid.small img{width:auto;max-width:100%}
 .cta{text-align:center;padding:96px 0}
 .cta h2{margin-bottom:28px}
 footer{border-top:1px solid var(--line);padding:28px 0;color:var(--mute);font-size:14px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
@@ -81,7 +84,7 @@ footer{border-top:1px solid var(--line);padding:28px 0;color:var(--mute);font-si
 
   <section id="e36">
     <div class="head"><h2>BMW <i>E36</i></h2><p>Лёгкая, живая, настоящая. Машина, с которой всё началось.</p></div>
-    <div class="grid" data-set="e36"></div>
+    <div class="grid small" data-set="e36"></div>
   </section>
 
   <section id="f32">
@@ -107,17 +110,17 @@ footer{border-top:1px solid var(--line);padding:28px 0;color:var(--mute);font-si
 <script>
 const P='https://i.postimg.cc/';
 const sets={
- e36:['htPCsKmr/Screenshot-2026-10-02-222550.png','SJ37NFDf/Screenshot-2026-10-02-222609.png','MvNbK2dy/Screenshot-2026-10-02-222621.png','cr2M4yX7/Screenshot-2026-10-02-222638.png','3dVCJ5nZ/Screenshot-2026-10-02-222653.png'],
- f32:['MZQgfZ0n/2090b4aa-5334-49f6-8d2f-113c2a802148.jpg','4nXWrgFD/38ea001e-ee19-45b2-9078-d8378323abfa.jpg','w39wSpGx/39b0aecf-304a-449a-8339-5ae986a8400e.jpg','23C0PDKC/5bb61282-7286-46d6-9695-db419c5bdf1e.jpg','grGgfWB1/63444f03-ef42-4be6-8435-d7dc6c80c68d.jpg','Dm7xtTMk/89a29704-039f-478d-931a-9e84061b4400.jpg','23C0PDKN/9205313a-71ce-4136-8acf-1423c53d18c8.jpg','w39wSpGB/9d852bb2-bc82-4cc3-bbd4-e39075de469e.jpg','yW7LwHbs/b463fa66-0a2d-4d57-8c09-d58bd1e1cdb1.jpg','QVjfR3yL/e1ec6d32-5cbd-48ea-9302-73f7f7be039f.jpg','BtJmd0VS/e66cae51-8245-426a-86aa-c96bebba1bc5.jpg']
+ e36:['htPCsKmr/Screenshot-2026-10-02-222550.png', 'pLX0CPj4/Screenshot-2026-10-02-222609.png', 'T3Yk0TbH/Screenshot-2026-10-02-222621.png', 'g2kMsGh7/Screenshot-2026-10-02-222638.png', 'kgXjs7SL/Screenshot-2026-10-02-222653.png'],
+ f32:['MZQgfZ0n/2090b4aa-5334-49f6-8d2f-113c2a802148.jpg', '7P2jJP1Z/38ea001e-ee19-45b2-9078-d8378323abfa.jpg', 'WpkxqpmZ/39b0aecf-304a-449a-8339-5ae986a8400e.jpg', 'RCH2JC1J/5bb61282-7286-46d6-9695-db419c5bdf1e.jpg', 'zDg4HDwD/63444f03-ef42-4be6-8435-d7dc6c80c68d.jpg', '66vF46V3/89a29704-039f-478d-931a-9e84061b4400.jpg', '05whK5Gj/9205313a-71ce-4136-8acf-1423c53d18c8.jpg', 'qB3W6Bc2/9d852bb2-bc82-4cc3-bbd4-e39075de469e.jpg', 'T2DB52jL/b463fa66-0a2d-4d57-8c09-d58bd1e1cdb1.jpg', 'zDg4HDwf/e1ec6d32-5cbd-48ea-9302-73f7f7be039f.jpg', 'dQygZQRy/e66cae51-8245-426a-86aa-c96bebba1bc5.jpg']
 };
-let cur=[],i=0;
 const lb=document.getElementById('lb'),big=document.getElementById('big');
+let cur=[],i=0;
 function show(){big.src=cur[i]}
 function open(list,n){cur=list;i=n;show();lb.classList.add('on')}
 function close(){lb.classList.remove('on')}
 function step(d){i=(i+d+cur.length)%cur.length;show()}
 document.querySelectorAll('.grid').forEach(g=>{
-  const list=sets[g.dataset.set].map(s=>P+s);
+  const list=sets[g.dataset.set].map(x=>P+x);
   list.forEach((u,n)=>{
     const b=document.createElement('button');
     b.setAttribute('aria-label','Открыть фото '+(n+1));
